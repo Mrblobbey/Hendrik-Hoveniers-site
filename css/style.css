@@ -1,0 +1,725 @@
+/* Algemene reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #e6f3e6;
+  color: #333;
+}
+/* Welkom content en titel &  Over mij  tekst*/
+h1 {
+    color: #1c4128;
+}
+/* Reviews */
+h2  {
+  color: #ECF4F0;
+  padding: 20px;
+  font-size: 30px;
+}
+/*  werkgebieden + Footer */
+h3 {
+  color: #1c4128;
+  text-align: center;
+}
+/* Contact tekst*/
+h4 {
+  color: #ECF4F0;
+  font-size: 30px;
+}
+/* Foto's tekst */
+h5 {
+  color: #1c4128;
+  text-align: center;
+  font-size: 35px;
+  padding: 20px;
+}
+h6 {
+  color: #1c4128;
+  font-size: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Hero en navigatie */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+/* welkoms tekst en style van foto  */
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: calc(100% - 400px); /* Afbeelding stopt 400px voor het einde */
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/hero-Hendrik.png') center/cover no-repeat;
+  z-index: 0;
+}
+
+/* welkoms style */
+.hero-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+/* welkoms style */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: white;
+  padding: 0 40px;
+  position: relative;
+  background-color: #1c4128;
+}
+/* welkoms style */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: calc(80% - 400px); /* breedte van je formulier om het gelijk responive te maken  */
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url('../img/hero-Hendrik.png') center/cover no-repeat;
+  z-index: 0;
+}
+/* welkoms style */
+.hero-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  max-width: 1793px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding-top: 0px;
+}
+
+
+.hero-content {
+  flex: 1;
+  max-width: 550px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+/* Logo wit links boven bij de nav */
+
+.logo img {
+  width: 200px;   
+}
+
+header .logo img {
+  height: 170px;
+}
+/* Header style*/
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+/* navigatie*/
+nav {
+  margin-left: 40px;
+}
+
+nav ul {
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li a {
+  color: #fff;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background-color: #30935f;
+  color: white;
+}
+
+.btn.secondary {
+  background-color: white;
+  color: #0f3d2e;
+  border: 2px solid white;
+}
+
+/* Formulier container */
+.form-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  color: #0f3d2e;
+  width: 350px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-right: 125px; /* voeg dit toe */
+}
+
+.form-container h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.form-container label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #30935f;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Photos */
+/* Slideshow styles (geïsoleerd, beïnvloedt niets anders op je site) */
+#photos {
+  width: 40em;
+  height: 29em;
+  margin: 0 auto;
+  position: relative;
+  padding: 25px;
+}
+
+#photos .carousel li {
+  width: 500px;
+  height: 281px;
+  background: #333;
+  display: inline-block;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 32px 42px 0 rgba(1, 22, 1, 0.5);
+}
+
+#photos .carousel li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
+
+#photos .carousel li p {
+  color: white;
+  font-weight: bold;
+  font-size: 5em;
+  text-align: center;
+  margin-top: 1.175em;
+}
+
+#photos .carousel .items {
+  position: absolute;
+}
+
+#photos .carousel .main-pos {
+  margin-left: 2em !important;
+  z-index: 3000;
+}
+
+#photos .carousel .left-pos {
+  opacity: .3;
+  margin-left: -17em !important;
+  z-index: 1000;
+  -webkit-transform: scale(.75);
+  -moz-transform: scale(.75);
+  transform: scale(.75);
+}
+
+#photos .carousel .back-pos {
+  margin-left: 2em !important;
+  opacity: .05;
+  -webkit-transform: scale(.5);
+  -moz-transform: scale(.5);
+  transform: scale(.5);
+}
+
+#photos .carousel .right-pos {
+  opacity: .3;
+  margin-left: 21em !important;
+  z-index: 1000;
+  -webkit-transform: scale(.75);
+  -moz-transform: scale(.75);
+  transform: scale(.75);
+}
+
+#photos span {
+  position: relative;
+  margin: 0 auto;
+  left: 17em;
+  top: 20em;
+}
+/* De diensten met de style van de kaarten en tekst */
+
+.services {
+  background: #1c4128;
+  color: #1c4128;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.services h2 {
+  color: #e6f3e6;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 40px auto 0 auto;
+}
+
+.card {
+  background: #e6f3e6;
+  border: 1px solid #1c4128;
+  border-radius: 12px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1c4128;
+}
+
+.card p {
+  font-size: 0.95em;
+  color: #333333;
+  text-align: center;
+  max-width: 250px;
+}
+
+
+/* Reviews Slideshow  */
+#reviews-carousel {
+  width: 100%; /* volledige breedte */
+  height: 450px;
+  margin: 0 auto;
+  position: relative;
+  background-color: #1c4128;
+  text-align: center; /* H2 centreren */
+  padding: 30px;
+
+}
+
+
+#reviews-carousel .carousel li {
+  width: 500px;
+  height: 281px;
+  background: #e6f3e6;
+  display: inline-block;
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 32px 42px 0 rgba(1, 22, 1, 0.5);
+}
+
+#reviews-carousel .carousel .items {
+  position: absolute;
+}
+
+#reviews-carousel .carousel .main-pos {
+  margin-left: 2em !important;
+  z-index: 3000;
+}
+
+#reviews-carousel .carousel .left-pos {
+  opacity: .3;
+  margin-left: -17em !important;
+  z-index: 1000;
+  transform: scale(.75);
+}
+
+#reviews-carousel .carousel .back-pos {
+  margin-left: 2em !important;
+  opacity: .05;
+  transform: scale(.5);
+}
+
+#reviews-carousel .carousel .right-pos {
+  opacity: .3;
+  margin-left: 21em !important;
+  z-index: 1000;
+  transform: scale(.75);
+}
+
+#reviews-carousel .review-text {
+  color: #1c4128;
+  padding: 2em;
+  font-family: sans-serif;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#reviews-carousel .review-text p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+#reviews-carousel .review-text h4 {
+  font-size: 1em;
+  font-weight: normal;
+  text-align: right;
+  margin: 0;
+  opacity: 0.8;
+}
+
+#reviews-carousel .carousel {
+    position: relative; /* container voor absolute items */
+    width: 100%;
+    height: 100%;
+}
+
+#reviews-carousel .carousel .items {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+/* over mij */
+.about {
+  padding: 60px 20px;
+  background-color: #e6f3e6;
+}
+
+.about h1 {
+  font-size: 2.5rem;
+  color: #1c4128;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.about-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* voor mobiel */
+}
+
+.about-text {
+  flex: 1;
+  min-width: 280px;
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  text-align: left;
+}
+
+.about-text p {
+  margin-bottom: 16px;
+}
+
+.about-image img {
+  width: 550px;
+  max-width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Reviews */
+.reviews {
+  background: #1c4128;
+  color: #e6f3e6;
+  padding: 50px;
+  text-align: center;
+}
+
+/* werkgebieden style en kaarten */
+.werkgebieden {
+  background: #e6f3e6;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.werkgebieden h2 {
+  color: #1c4128;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.gebied-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.gebied-card {
+  background: #ffffff;
+  border: 1px solid #1c4128;
+  border-radius: 12px;
+  padding: 40px 20px;
+  width: 650px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gebied-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.gebied-card h3 {
+  color: #1c4128;
+  font-size: 1.9em;
+  margin: 0;
+  padding-top: 20px; /* ruimte boven de titel */
+
+}
+
+/* Footer */
+footer {
+  background: #1c4128;
+  color: #fff;
+  padding: 30px 50px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  font-size: 23px;
+  align-items: center;
+
+}
+
+footer img {
+  height: 150px;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+footer .copyright {
+  text-align: center;
+  border-top: 1px solid #fff;
+  padding-top: 10px;
+}
+
+/* telefoon nummer footer */
+
+.tel-button {
+  display: inline-block;
+  background-color: #30935f;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.tel-button:hover {
+  background-color: #26724b;
+}
+
+
+/* mini css voor telefoon */
+@media (max-width: 768px) {
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+/* Header  */
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+/* Header logo*/
+  header .logo {
+    margin-left: -10px;
+  }
+/* nav */
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+/* hero content */
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black; /* donkere filter */
+    opacity: 0.3;
+    z-index: 1;
+  }
+
+  .hero-content, .form-container {
+    max-width: 100%;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: -125px;
+  }
+
+  .hero-content h1,
+  .hero-content p {
+    text-align: center;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+/* fotos */
+  #photos {
+      text-align: center;       /* tekst centreren */
+      width: 100%;
+  }
+  .photo-gallery img {
+    width: 100%;
+    height: auto; /* behoud verhouding */
+  }
+/* diensten */
+  .service-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    .about-wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+/* over mij */
+  .about-text {
+    text-align: center;
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .about-image img {
+    width: 300px;
+  }
+/* footer */
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+}
