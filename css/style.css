@@ -243,14 +243,13 @@ nav ul li a {
   cursor: pointer;
 }
 
-/* Photos */
+/* foto's  */
 /* Slideshow styles (geïsoleerd, beïnvloedt niets anders op je site) */
 #photos {
   width: 40em;
-  height: 29em;
+  height: 25em;
   margin: 0 auto;
   position: relative;
-  padding: 25px;
 }
 
 #photos .carousel li {
@@ -389,12 +388,11 @@ nav ul li a {
 /* Reviews Slideshow  */
 #reviews-carousel {
   width: 100%; /* volledige breedte */
-  height: 450px;
+  height: 25em;
   margin: 0 auto;
   position: relative;
   background-color: #1c4128;
   text-align: center; /* H2 centreren */
-  padding: 30px;
 
 }
 
@@ -475,6 +473,8 @@ nav ul li a {
     left: 50%;
     transform: translateX(-50%);
 }
+
+
 
 
 

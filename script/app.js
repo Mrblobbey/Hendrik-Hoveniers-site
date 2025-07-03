@@ -1,83 +1,101 @@
-window.scrollTo(0, 0);
-$(document).ready(function() {
-    // slideshow automatisch wisselen
-    var autoSwap = setInterval(swap, 3500);
+$(document).ready(function () {
+    function initCarousel(carouselSelector) {
+        var $carousel = $(carouselSelector);
+        var $items = $carousel.find('li.items');
+        var itemCount = $items.length;
+        var current = 0;
+        var autoSwap;
 
-    // pauzeer slideshow bij hover en hervat bij mouseout
-    $('ul.carousel, span').hover(
-        function () { clearInterval(autoSwap); },
-        function () { autoSwap = setInterval(swap, 3500); }
-    );
-
-    // globale variabelen
-    var items = [];
-    var startItem = 1;
-    var position = 0;
-    var itemCount = $('.carousel li.items').length;
-    var resetCount = itemCount;
-
-    // optioneel: teksten verzamelen indien nodig
-    $('li.items').each(function(index) {
-        items[index] = $(this).text();
-    });
-
-    // wissel functie
-    function swap(action) {
-        var direction = action;
-
-        if (direction === 'counter-clockwise') {
-            var leftitem = $('.left-pos').attr('id') - 1;
-            if (leftitem === 0) {
-                leftitem = itemCount;
-            }
-
-            $('.right-pos').removeClass('right-pos').addClass('back-pos');
-            $('.main-pos').removeClass('main-pos').addClass('right-pos');
-            $('.left-pos').removeClass('left-pos').addClass('main-pos');
-            $('#' + leftitem).removeClass('back-pos').addClass('left-pos');
-
-            startItem--;
-            if (startItem < 1) {
-                startItem = itemCount;
-            }
+        function updatePositions() {
+            $items.removeClass('main-pos left-pos right-pos back-pos');
+            $items.each(function (i) {
+                var pos = (i - current + itemCount) % itemCount;
+                if (pos === 0) {
+                    $(this).addClass('main-pos');
+                } else if (pos === 1) {
+                    $(this).addClass('right-pos');
+                } else if (pos === itemCount - 1) {
+                    $(this).addClass('left-pos');
+                } else {
+                    $(this).addClass('back-pos');
+                }
+            });
         }
 
-        if (direction === 'clockwise' || direction === '' || direction == null) {
-            function pos(positionvalue) {
-                if (positionvalue !== 'leftposition') {
-                    position++;
-                    if ((startItem + position) > resetCount) {
-                        position = 1 - startItem;
-                    }
-                }
-                if (positionvalue === 'leftposition') {
-                    position = startItem - 1;
-                    if (position < 1) {
-                        position = itemCount;
-                    }
-                }
-                return position;
+        function swap(direction) {
+            if (direction === 'counter-clockwise') {
+                current = (current - 1 + itemCount) % itemCount;
+            } else {
+                current = (current + 1) % itemCount;
             }
-
-            $('#' + startItem).removeClass('main-pos').addClass('left-pos');
-            $('#' + (startItem + pos())).removeClass('right-pos').addClass('main-pos');
-            $('#' + (startItem + pos())).removeClass('back-pos').addClass('right-pos');
-            $('#' + pos('leftposition')).removeClass('left-pos').addClass('back-pos');
-
-            startItem++;
-            position = 0;
-            if (startItem > itemCount) {
-                startItem = 1;
-            }
+            updatePositions();
         }
+
+        // Auto swap
+        function startAutoSwap() {
+            autoSwap = setInterval(function () { swap('clockwise'); }, 3500);
+        }
+        function stopAutoSwap() {
+            clearInterval(autoSwap);
+        }
+
+        // Init
+        updatePositions();
+        startAutoSwap();
+
+        // Pause on hover
+        $carousel.on('mouseenter', stopAutoSwap);
+        $carousel.on('mouseleave', startAutoSwap);
+
+        // Click to rotate
+        $items.on('click', function () {
+            if ($(this).hasClass('left-pos')) {
+                swap('counter-clockwise');
+            } else if ($(this).hasClass('right-pos')) {
+                swap('clockwise');
+            }
+        });
+
+        // Touch swipe for mobile
+        let touchStartX = null;
+        $carousel.on('touchstart', function (e) {
+            touchStartX = e.originalEvent.touches[0].clientX;
+        });
+        $carousel.on('touchend', function (e) {
+            if (touchStartX === null) return;
+            let touchEndX = e.originalEvent.changedTouches[0].clientX;
+            if (touchEndX - touchStartX > 50) {
+                swap('counter-clockwise');
+            } else if (touchStartX - touchEndX > 50) {
+                swap('clockwise');
+            }
+            touchStartX = null;
+        });
     }
 
-    // klik functionaliteit om handmatig te wisselen
-    $('.carousel li').click(function() {
-        if ($(this).hasClass('left-pos')) {
-            swap('counter-clockwise');
-        } else {
-            swap('clockwise');
-        }
-    });
+    // Init both carousels
+    initCarousel('#photos .carousel');
+    initCarousel('#reviews-carousel .carousel');
+
+    // Contactformulier handler
+    function openGmail(event) {
+        event.preventDefault(); // voorkomt standaard formulierverzending
+
+        const naam = document.getElementById("naam").value;
+        const email = document.getElementById("email").value;
+        const postcode = document.getElementById("postcode").value;
+        const bericht = document.getElementById("bericht").value;
+
+        const ontvanger = "hendrikhogendijkhovenier@gmail.com";
+        const onderwerp = encodeURIComponent("Nieuw bericht van contactformulier");
+        const body = encodeURIComponent(
+            `Naam: ${naam}\nE-mail: ${email}\nPostcode: ${postcode}\n\nBericht:\n${bericht}`
+        );
+
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${ontvanger}&su=${onderwerp}&body=${body}`;
+
+        window.open(gmailUrl, '_blank'); // opent Gmail in een nieuw tabblad
+    }
+
+    document.getElementById("offerte-form").addEventListener("submit", openGmail);
 });
