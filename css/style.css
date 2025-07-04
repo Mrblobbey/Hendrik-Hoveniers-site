@@ -685,6 +685,9 @@ footer .copyright {
     flex-direction: column;
     gap: 10px;
   }
+    .hero-inner{
+      padding-bottom: 20px;
+    }
 /* fotos */
   #photos {
       text-align: center;       /* tekst centreren */
@@ -714,6 +717,37 @@ footer .copyright {
 
   .about-image img {
     width: 300px;
+  }
+/* reviews */
+    #reviews-carousel .carousel {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: auto;
+  }
+ 
+  #reviews-carousel .carousel li {
+    position: static !important;
+    margin: 0 auto 20px auto !important;
+    width: 90% !important;
+    height: auto !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+ 
+  #reviews-carousel .carousel li.left-pos,
+  #reviews-carousel .carousel li.right-pos,
+  #reviews-carousel .carousel li.back-pos {
+    display: none !important;
+  }
+ 
+  #reviews-carousel .review-text {
+    padding: 1.5em;
+    font-size: 1rem;
+  }
+ 
+  #reviews-carousel h2 {
+    font-size: 1.5rem;
   }
 /* footer */
   .footer-content {
